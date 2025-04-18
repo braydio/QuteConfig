@@ -1,0 +1,3 @@
+# Rename to .bash_aliases
+
+echo ".bash_aliases found"
