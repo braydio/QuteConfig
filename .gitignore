@@ -1,3 +1,1 @@
-# I don't want my local credentials and stuff accidentally synced
-.basrc
-.bash_aliases
+# This is the .gitignore.
