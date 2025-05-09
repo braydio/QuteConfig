@@ -1,11 +1,15 @@
 #!/bin/bash
 
-THEME_FILE=~/.config/qutebrowser/theme_toggle_state
+THEME_STATE_FILE="$HOME/.config/qutebrowser/theme_toggle_state"
+current=$(cat "$THEME_STATE_FILE" 2>/dev/null || echo "mocha")
 
-state=$(cat "$THEME_FILE" 2>/dev/null || echo "mocha")
-next="latte"
-[[ "$state" == "latte" ]] && next="mocha"
+if [[ "$current" == "mocha" ]]; then
+  next="latte"
+else
+  next="mocha"
+fi
 
-echo "$next" >"$THEME_FILE"
+echo "$next" >"$THEME_STATE_FILE"
 
-echo ":config-source theme_${next}.py" | socat - ~/.qutebrowser/qutebrowser-*.fifo
+# Launch Qutebrowser command page to reload theme
+xdg-open "qute://command/config-source%20theme_${next}.py"
