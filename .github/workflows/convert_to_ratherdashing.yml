@@ -1,0 +1,13 @@
+name: Rename QuteConfig
+on: __created
+
+with: 
+  push:
+    branch: main
+
+jobs:
+  - name: Rename and Merge
+    run: |
+      name: Rename and copy contents
+      run:bash
+      shell: custom_rename-quteconfig.sh
