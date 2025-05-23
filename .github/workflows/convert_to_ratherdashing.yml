@@ -1,13 +1,14 @@
-name: Rename QuteConfig
-on: __created
+name: Convert QuteConfig to RatherDashing
 
-with: 
-  push:
-    branch: main
+on:
+  workflow_dispatch:
 
-jobs:
-  - name: Rename and Merge
-    run: |
-      name: Rename and copy contents
-      run:bash
-      shell: custom_rename-quteconfig.sh
+jobs: 
+  rename-and-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@2
+
+      - name: Run transformation script
+        run: bash ./custom_rename-quteconfig.sh
